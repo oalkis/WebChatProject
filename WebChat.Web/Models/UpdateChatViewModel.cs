@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using WebChat.Entities;
+
+namespace WebChat.Web.Models
+{
+    public class UpdateChatViewModel
+    {
+        public Chat chat { get; set; }
+        public List<User> Users { get; set; }
+    }
+}

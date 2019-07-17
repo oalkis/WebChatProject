@@ -1,0 +1,45 @@
+﻿@model WebChat.Web.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Giriş";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Giriş</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <span class="alert-danger"> @ViewBag.Uyari</span>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, "Şifre", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @required = "" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Giriş" class="btn btn-success" />
+            <a class="btn btn-default" asp-controller="Account" asp-action="Register">
+                <input type="button" value="Kayıt Ol" class="btn btn-info" />
+            </a>
+        </div>
+
+    </div>
+
+    </div>
+}

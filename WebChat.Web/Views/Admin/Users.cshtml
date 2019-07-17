@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebChat.Entities.User>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h2>Üyeler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Üye", "AddUser")
+</p>
+<table class="table">
+    <tr>
+   
+        <th>
+            Kullanıcı Adı
+        </th>
+        <th>
+            E-Mail
+        </th>
+
+  
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+       
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Düzenle", "UpdateUser", new { id = item.UserId }) |
+
+                @Html.ActionLink("Sil", "DeleteUser", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+
+</table>

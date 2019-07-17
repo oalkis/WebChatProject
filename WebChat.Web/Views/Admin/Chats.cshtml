@@ -1,0 +1,50 @@
+﻿@model WebChat.Web.Models.ChatListViewModel
+
+    @{
+    ViewData["Title"] = "Chats";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    }
+
+    <h2>Mesajlar</h2>
+
+ 
+    <table class="table">
+        <tr>
+
+            <th>
+                Kullanıcı Adı
+            </th>
+            <th>
+                Mesaj
+            </th>
+            <th>
+                Tarih
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Chats)
+    {
+    <tr>
+
+        <td>
+            @Model.Users.FirstOrDefault(x => x.UserId == item.UserId).Username
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Messages)
+
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "UpdateMessage", new { id = item.ChatId }) |
+
+            @Html.ActionLink("Sil", "DeleteMessage", new { id = item.ChatId })
+        </td>
+    </tr>
+    }
+
+    </table>

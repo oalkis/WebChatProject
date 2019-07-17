@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Web Chat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h3>Web Chat</h3>
+    <div class="messaging">
+
+        <div class="mesgs">
+            <div class="msg_history">
+                <div class="incoming_msg" id="messagesList">
+                  
+
+            </div>
+            <div class="type_msg">
+                <div class="input_msg_write">
+                    <input type="text" class="form-control" id="userInput" hidden="hidden" value="@ViewBag.Name" />
+                    <input type="text" class="form-control" id="userId" hidden="hidden" value="@ViewBag.UserId" />
+                   
+
+                    <input type="text" id="messageInput" class="write_msg" placeholder="Type a message" />
+                    <button class="msg_send_btn"  id="sendButton" type="button"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

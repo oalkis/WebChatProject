@@ -1,0 +1,46 @@
+﻿@addTagHelper "*,Microsoft.AspNetCore.Mvc.TagHelpers"
+@model WebChat.Web.Models.UpdateChatViewModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop 	m-container m-container--responsive m-container--xxl m-page__container m-body">
+
+
+
+
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+        <div class="m-subheader ">
+
+            <form enctype="multipart/form-data" asp-controller="Admin" asp-action="UrunGuncelle" method="post">
+                <div class="form-group">
+                    <label asp-for="chat.Messages">Mesaj</label>
+                    <input asp-for="chat.Messages" class="form-control" placeholder="Mesaj" />
+                    <span asp-validation-for="chat.Messages"></span>
+
+
+                    <div class="form-group">
+                        <label asp-for="chat.UserId">Kullanıcı Adı</label>
+                        <select asp-for="chat.UserId" class="form-control" asp-items="@(new SelectList(Model.Users,"UserId","Username"))"></select>
+                        <span asp-validation-for="chat.UserId"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="chat.CreateDate">Tarih</label>
+                        <input asp-for="chat.CreateDate" class="form-control" type="datetime-local" placeholder="date" />
+                        <span asp-validation-for="chat.CreateDate"></span>
+
+                    </div>
+                
+                
+                    <input type="hidden" asp-for="chat.ChatId" />
+                    <input type="submit" value="Güncelle" class="btn btn-xs btn-success" />
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
